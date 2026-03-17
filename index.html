@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frank Fan</title>
+    
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <style>
         body {
@@ -27,16 +28,23 @@
             background-color: #f8f9fa; margin: 0 auto; border: 1px solid #eee;
         }
         .item-description { font-size: 0.95rem; color: #444; margin-bottom: 1rem; line-height: 1.5;}
-        .footer {
-            margin-top: 2rem;
-            text-align: center;
-            border-top: 1px solid #eee;
-            padding-top: 2rem;
-            width: 90%;
-            max-width: 600px;
+        
+        .suggestion-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+        .form-input { 
+            width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ccc; 
+            font-size: 1rem; font-family: inherit; outline: none; transition: border-color 0.3s;
         }
-        .footer img { opacity: 0.7; transition: opacity 0.3s; }
-        .footer img:hover { opacity: 1; }
+        .form-input:focus { border-bottom: 1px solid #000; }
+        .submit-btn {
+            align-self: flex-start; padding: 8px 20px; background-color: #000; color: #fff;
+            border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s;
+        }
+        .submit-btn:hover { background-color: #333; }
+
+        .footer {
+            margin-top: 2rem; text-align: center; border-top: 1px solid #eee;
+            padding-top: 2rem; width: 90%; max-width: 600px; font-size: 0.8rem; color: #999;
+        }
     </style>
 </head>
 <body>
@@ -44,12 +52,14 @@
         <h1>Frank Fan</h1>
         <p>Thinker | Athlete</p>
     </div>
+    
     <div class="content-section">
         <div class="section-title">Recents</div>
         <div class="image-container">
             <img src="status.png" alt="Current State">
         </div>
     </div>
+    
     <div class="content-section">
         <div class="section-title">un serpent boa qui avale un fauve</div>
         <p class="item-description">Interactive 3D Viewer: home, sweet home.</p>
@@ -60,9 +70,18 @@
             camera-controls>
         </model-viewer>
     </div>
+
+    <div class="content-section">
+        <div class="section-title">Dialogues</div>
+        <p class="item-description">Leave a suggestion or tell me what to build next.</p>
+        <form class="suggestion-form" action="https://formspree.io/f/xvgzpyyv" method="POST">
+            <input type="text" name="message" class="form-input" placeholder="e.g. I think you could add a ... category" required>
+            <button type="submit" class="submit-btn">Send</button>
+        </form>
+    </div>
     
     <div class="footer">
-        <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fddfranky7.github.io&label=visitors&countColor=%23000000&labelStyle=upper" alt="visitors">
+        Analytics Powered by Enterprise Data Engine (Pending)
     </div>
 </body>
 </html>
