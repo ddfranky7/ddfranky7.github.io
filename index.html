@@ -73,8 +73,8 @@
     <div class="content-section">
         <div class="section-title">Dialogues</div>
         <p class="item-description">Leave a suggestion or tell me what to build next.</p>
-        <form class="suggestion-form" action="https://formspree.io/f/xvgzpyyv" method="POST">
-            <input type="text" name="message" class="form-input" placeholder="e.g. I think you could add a ... category" required>
+        <form id="suggestionForm" class="suggestion-form">
+            <input type="text" id="messageInput" name="message" class="form-input" placeholder="e.g. I think you could add a ... category" required>
             <button type="submit" class="submit-btn">Send</button>
         </form>
     </div>
@@ -82,5 +82,28 @@
     <div class="footer">
         Analytics Powered by Enterprise Data Engine (Pending)
     </div>
+
+    <script>
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 极其关键：拦截浏览器的默认跳转行为
+            var msg = document.getElementById('messageInput').value;
+            
+            // 使用 Fetch API 直接在后台把数据“塞”给 Formspree
+            fetch("https://formspree.io/f/xvgzpyyv", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: msg })
+            }).then(function(response) {
+                if(response.ok) {
+                    alert("Message sent successfully!"); // 成功弹窗
+                    document.getElementById('messageInput').value = ''; // 清空输入框
+                } else {
+                    alert("Error sending message. Please try again.");
+                }
+            }).catch(function(error) {
+                alert("Network error. Could not send.");
+            });
+        });
+    </script>
 </body>
 </html>
