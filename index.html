@@ -53,3 +53,34 @@
     </div>
     
     <div class="content-section">
+        <div class="section-title">Recents</div>
+        <div class="image-container">
+            <img src="status.png" alt="Current State">
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <div class="section-title">un serpent boa qui avale un fauve</div>
+        <p class="item-description">Interactive 3D Viewer: home, sweet home.</p>
+        <model-viewer 
+            src="castle.glb" 
+            alt="3D model" 
+            auto-rotate 
+            camera-controls>
+        </model-viewer>
+    </div>
+
+    <div class="content-section">
+        <div class="section-title">Dialogues</div>
+        <p class="item-description">Leave a suggestion or tell me what to build next.</p>
+        <form class="suggestion-form" action="https://formspree.io/f/maqppggd" method="POST">
+            <input type="text" name="message" class="form-input" placeholder="e.g. I think you could add a ... category" required>
+            <button type="submit" class="submit-btn">Send</button>
+        </form>
+    </div>
+    
+    <div class="footer">
+        Digital Territory Established 2026
+    </div>
+</body>
+</html>
